@@ -80,6 +80,88 @@
       background: rgba(255,255,255,0.2);
     }
     
+    /* Профиль пользователя */
+    .user-profile {
+      position: relative;
+      margin-left: 20px;
+    }
+    
+    .profile-btn {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+    
+    .profile-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    
+    .profile-btn i {
+      margin-right: 8px;
+    }
+    
+    .profile-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 8px;
+      object-fit: cover;
+    }
+    
+    .profile-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      min-width: 200px;
+      margin-top: 10px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+    
+    .profile-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .profile-dropdown a {
+      display: block;
+      padding: 12px 15px;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .profile-dropdown a:hover {
+      background: #f9f9f9;
+      color: #e23ca5;
+    }
+    
+    .profile-dropdown a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .profile-dropdown .divider {
+      height: 1px;
+      background: #eee;
+      margin: 5px 0;
+    }
+    
     /* Мобильное меню */
     .menu-toggle {
       display: none;
@@ -108,6 +190,7 @@
       text-align: center;
       color: white;
       padding: 0 20px;
+      position: relative;
     }
     
     .hero h1 {
@@ -140,6 +223,83 @@
       background: #5e2dc4;
       transform: translateY(-3px);
       box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    
+    /* Галерея на главной */
+    .gallery {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    
+    .gallery h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #5e2dc4;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 250px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      color: white;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    .gallery-overlay h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin: 0 0 5px;
+    }
+    
+    .gallery-overlay p {
+      margin: 0;
+      font-size: 0.9rem;
     }
     
     /* О нас */
@@ -581,6 +741,199 @@
       font-size: 0.9rem;
     }
     
+    /* Модальное окно для входа/регистрации */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal.active {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      padding: 30px;
+      position: relative;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #999;
+    }
+    
+    .modal-tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .modal-tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      color: #999;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-tab.active {
+      color: #e23ca5;
+      border-bottom: 2px solid #e23ca5;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 1rem;
+    }
+    
+    .form-button {
+      background: linear-gradient(to right, #e23ca5, #5e2dc4);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .form-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    
+    /* Всплывающее окно о персональных данных */
+    .cookie-consent {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      z-index: 3000;
+      transform: translateY(150%);
+      transition: transform 0.5s ease;
+    }
+    
+    .cookie-consent.active {
+      transform: translateY(0);
+    }
+    
+    .cookie-consent-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .cookie-consent-text {
+      flex: 1;
+    }
+    
+    .cookie-consent-text h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #5e2dc4;
+    }
+    
+    .cookie-consent-text p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .cookie-consent-text a {
+      color: #e23ca5;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .cookie-consent-text a:hover {
+      text-decoration: underline;
+    }
+    
+    .cookie-consent-buttons {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    
+    .cookie-consent-button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .cookie-accept {
+      background: linear-gradient(to right, #e23ca5, #5e2dc4);
+      color: white;
+    }
+    
+    .cookie-accept:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .cookie-decline {
+      background: #f0f0f0;
+      color: #666;
+    }
+    
+    .cookie-decline:hover {
+      background: #e0e0e0;
+    }
+    
     /* Адаптивность */
     @media (max-width: 768px) {
       .nav-links {
@@ -609,12 +962,21 @@
         display: flex;
       }
       
+      .user-profile {
+        margin-left: auto;
+        margin-right: 15px;
+      }
+      
       .hero h1 {
         font-size: 2.5rem;
       }
       
       .hero p {
         font-size: 1.2rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
       }
       
       .about-content,
@@ -634,6 +996,16 @@
       .promotion-image {
         order: 1;
       }
+      
+      .cookie-consent-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .cookie-consent-buttons {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
@@ -647,12 +1019,29 @@
       </div>
       <ul class="nav-links">
         <li><a href="#home">Главная</a></li>
+        <li><a href="#gallery">Галерея</a></li>
         <li><a href="#about">О нас</a></li>
         <li><a href="#services">Услуги</a></li>
         <li><a href="#promotions">Акции</a></li>
         <li><a href="#testimonials">Отзывы</a></li>
         <li><a href="#contact">Контакты</a></li>
       </ul>
+      
+      <!-- Профиль пользователя -->
+      <div class="user-profile">
+        <button class="profile-btn" id="profileBtn">
+          <i class="fas fa-user"></i>
+          <span>Войти</span>
+        </button>
+        <div class="profile-dropdown" id="profileDropdown">
+          <a href="#" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Войти</a>
+          <a href="#" id="registerBtn"><i class="fas fa-user-plus"></i> Регистрация</a>
+          <div class="divider"></div>
+          <a href="#" id="profileLink" style="display: none;"><i class="fas fa-user-circle"></i> Личный кабинет</a>
+          <a href="#" id="logoutBtn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Выход</a>
+        </div>
+      </div>
+      
       <div class="menu-toggle">
         <span></span>
         <span></span>
@@ -666,6 +1055,55 @@
     <h1 data-aos="fade-up">White Rose Beauty SPA</h1>
     <p data-aos="fade-up" data-aos-delay="100">Премиум салон красоты в Сыктывкаре</p>
     <a href="#services" class="cta-button" data-aos="fade-up" data-aos-delay="200">Наши услуги</a>
+  </section>
+
+  <!-- Галерея -->
+  <section class="gallery" id="gallery">
+    <h2 data-aos="fade-up">Галерея салона</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://images.unsplash.com/photo-1596755094512-fb1a2afabf1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Массаж">
+        <div class="gallery-overlay">
+          <h3>Массаж</h3>
+          <p>Расслабляющие процедуры</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Косметология">
+        <div class="gallery-overlay">
+          <h3>Косметология</h3>
+          <p>Уход за лицом и телом</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Маникюр">
+        <div class="gallery-overlay">
+          <h3>Маникюр</h3>
+          <p>Идеальные ногти</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://images.unsplash.com/photo-1521590832167-220acb8fc191?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Парикмахерская">
+        <div class="gallery-overlay">
+          <h3>Парикмахерская</h3>
+          <p>Современные стрижки</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="500">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Интерьер салона">
+        <div class="gallery-overlay">
+          <h3>Интерьер</h3>
+          <p>Уютная атмосфера</p>
+        </div>
+      </div>
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="600">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="СПА-зона">
+        <div class="gallery-overlay">
+          <h3>СПА-зона</h3>
+          <p>Полное расслабление</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- О нас -->
@@ -868,6 +1306,7 @@
           <li><a href="#promotions">Акции</a></li>
           <li><a href="#testimonials">Отзывы</a></li>
           <li><a href="#contact">Контакты</a></li>
+          <li><a href="#" id="privacyLink">Политика конфиденциальности</a></li>
         </ul>
       </div>
       <div class="footer-section">
@@ -882,6 +1321,69 @@
       &copy; 2023 White Rose Beauty SPA. Все права защищены.
     </div>
   </footer>
+
+  <!-- Модальное окно для входа/регистрации -->
+  <div class="modal" id="authModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-tabs">
+        <button class="modal-tab active" data-tab="login">Вход</button>
+        <button class="modal-tab" data-tab="register">Регистрация</button>
+      </div>
+      
+      <!-- Форма входа -->
+      <div class="tab-content active" id="loginTab">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" required>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Пароль</label>
+            <input type="password" id="loginPassword" required>
+          </div>
+          <button type="submit" class="form-button">Войти</button>
+        </form>
+      </div>
+      
+      <!-- Форма регистрации -->
+      <div class="tab-content" id="registerTab">
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="registerName">Имя</label>
+            <input type="text" id="registerName" required>
+          </div>
+          <div class="form-group">
+            <label for="registerEmail">Email</label>
+            <input type="email" id="registerEmail" required>
+          </div>
+          <div class="form-group">
+            <label for="registerPhone">Телефон</label>
+            <input type="tel" id="registerPhone" required>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Пароль</label>
+            <input type="password" id="registerPassword" required>
+          </div>
+          <button type="submit" class="form-button">Зарегистрироваться</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Всплывающее окно о персональных данных -->
+  <div class="cookie-consent" id="cookieConsent">
+    <div class="cookie-consent-content">
+      <div class="cookie-consent-text">
+        <h3>Согласие на обработку персональных данных</h3>
+        <p>Мы используем файлы cookie и обрабатываем персональные данные для улучшения работы сайта и предоставления вам релевантной информации. Продолжая использовать сайт, вы соглашаетесь с нашей <a href="#" id="privacyPolicyLink">политикой конфиденциальности</a>.</p>
+      </div>
+      <div class="cookie-consent-buttons">
+        <button class="cookie-consent-button cookie-accept" id="acceptCookies">Принять</button>
+        <button class="cookie-consent-button cookie-decline" id="declineCookies">Отклонить</button>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -928,6 +1430,212 @@
       // Здесь можно добавить код для отправки формы на сервер
       alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время.');
       this.reset();
+    });
+    
+    // Профиль пользователя
+    const profileBtn = document.getElementById('profileBtn');
+    const profileDropdown = document.getElementById('profileDropdown');
+    const loginBtn = document.getElementById('loginBtn');
+    const registerBtn = document.getElementById('registerBtn');
+    const profileLink = document.getElementById('profileLink');
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    // Модальное окно
+    const authModal = document.getElementById('authModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalTabs = document.querySelectorAll('.modal-tab');
+    const loginTab = document.getElementById('loginTab');
+    const registerTab = document.getElementById('registerTab');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    
+    // Переключение вкладок в модальном окне
+    modalTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        modalTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        if (tab.dataset.tab === 'login') {
+          loginTab.classList.add('active');
+          registerTab.classList.remove('active');
+        } else {
+          loginTab.classList.remove('active');
+          registerTab.classList.add('active');
+        }
+      });
+    });
+    
+    // Открытие/закрытие выпадающего меню профиля
+    profileBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      profileDropdown.classList.toggle('active');
+    });
+    
+    // Закрытие выпадающего меню при клике вне его
+    document.addEventListener('click', () => {
+      profileDropdown.classList.remove('active');
+    });
+    
+    // Открытие модального окна для входа
+    loginBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      authModal.classList.add('active');
+      profileDropdown.classList.remove('active');
+    });
+    
+    // Открытие модального окна для регистрации
+    registerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      authModal.classList.add('active');
+      profileDropdown.classList.remove('active');
+      
+      // Переключение на вкладку регистрации
+      modalTabs.forEach(t => t.classList.remove('active'));
+      modalTabs[1].classList.add('active');
+      loginTab.classList.remove('active');
+      registerTab.classList.add('active');
+    });
+    
+    // Закрытие модального окна
+    modalClose.addEventListener('click', () => {
+      authModal.classList.remove('active');
+    });
+    
+    // Закрытие модального окна при клике вне его
+    authModal.addEventListener('click', (e) => {
+      if (e.target === authModal) {
+        authModal.classList.remove('active');
+      }
+    });
+    
+    // Обработка формы входа
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Здесь можно добавить код для отправки данных на сервер
+      const email = document.getElementById('loginEmail').value;
+      
+      // Симуляция успешного входа
+      alert(`Вы успешно вошли как ${email}`);
+      
+      // Обновление интерфейса
+      updateProfileUI(true, email);
+      
+      // Закрытие модального окна
+      authModal.classList.remove('active');
+      loginForm.reset();
+    });
+    
+    // Обработка формы регистрации
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Здесь можно добавить код для отправки данных на сервер
+      const name = document.getElementById('registerName').value;
+      const email = document.getElementById('registerEmail').value;
+      
+      // Симуляция успешной регистрации
+      alert(`Вы успешно зарегистрировались как ${name}`);
+      
+      // Обновление интерфейса
+      updateProfileUI(true, email, name);
+      
+      // Закрытие модального окна
+      authModal.classList.remove('active');
+      registerForm.reset();
+    });
+    
+    // Выход из профиля
+    logoutBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Симуляция выхода
+      alert('Вы вышли из профиля');
+      
+      // Обновление интерфейса
+      updateProfileUI(false);
+      
+      // Закрытие выпадающего меню
+      profileDropdown.classList.remove('active');
+    });
+    
+    // Функция обновления интерфейса профиля
+    function updateProfileUI(isLoggedIn, email = '', name = '') {
+      if (isLoggedIn) {
+        // Обновление кнопки профиля
+        profileBtn.innerHTML = `
+          <img src="https://randomuser.me/api/portraits/${Math.random() > 0.5 ? 'women' : 'men'}/${Math.floor(Math.random() * 70)}.jpg" alt="Аватар" class="profile-avatar">
+          <span>${name || email}</span>
+        `;
+        
+        // Обновление выпадающего меню
+        loginBtn.style.display = 'none';
+        registerBtn.style.display = 'none';
+        profileLink.style.display = 'block';
+        logoutBtn.style.display = 'block';
+      } else {
+        // Обновление кнопки профиля
+        profileBtn.innerHTML = `
+          <i class="fas fa-user"></i>
+          <span>Войти</span>
+        `;
+        
+        // Обновление выпадающего меню
+        loginBtn.style.display = 'block';
+        registerBtn.style.display = 'block';
+        profileLink.style.display = 'none';
+        logoutBtn.style.display = 'none';
+      }
+    }
+    
+    // Инициализация состояния профиля при загрузке страницы
+    document.addEventListener('DOMContentLoaded', () => {
+      // Проверка, есть ли данные о пользователе в localStorage
+      const user = localStorage.getItem('user');
+      
+      if (user) {
+        const userData = JSON.parse(user);
+        updateProfileUI(true, userData.email, userData.name);
+      }
+      
+      // Показываем окно согласия на обработку персональных данных, если пользователь еще не принимал решение
+      const cookieConsent = localStorage.getItem('cookieConsent');
+      
+      if (!cookieConsent) {
+        setTimeout(() => {
+          document.getElementById('cookieConsent').classList.add('active');
+        }, 1000);
+      }
+    });
+    
+    // Обработка всплывающего окна о персональных данных
+    const cookieConsent = document.getElementById('cookieConsent');
+    const acceptCookies = document.getElementById('acceptCookies');
+    const declineCookies = document.getElementById('declineCookies');
+    const privacyPolicyLink = document.getElementById('privacyPolicyLink');
+    const privacyLink = document.getElementById('privacyLink');
+    
+    // Принятие cookies
+    acceptCookies.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      cookieConsent.classList.remove('active');
+    });
+    
+    // Отклонение cookies
+    declineCookies.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'declined');
+      cookieConsent.classList.remove('active');
+    });
+    
+    // Обработка ссылок на политику конфиденциальности
+    privacyPolicyLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Здесь будет страница с политикой конфиденциальности');
+    });
+    
+    privacyLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Здесь будет страница с политикой конфиденциальности');
     });
   </script>
 </body>
